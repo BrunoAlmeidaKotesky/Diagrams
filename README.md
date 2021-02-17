@@ -3,7 +3,7 @@
 Utilizar o seguinte gatilho, o site e a lista base não importam.
 <img src="https://imgur.com/h6J0X3f.png" width="800" height="200">
 
-Aqui só é necessário inicializar as variáveis Contador e NomeBiblioteca e RootSite, com o valor padrão sendo https://contoso.sharepoint.com/sites/
+Aqui só é necessário inicializar as variáveis Contador e NomeBiblioteca e varRootSite, com o valor padrão sendo https://contoso.sharepoint.com/sites/
 <img src="https://imgur.com/c515wiD.png" width="800" height="400">
 
 Para a variável itemURL, utilize o valor do próprio trigger: `triggerBody()?['entity']?['itemUrl']` e varSite vazio.
@@ -20,7 +20,8 @@ Defina a variável varSite como: `concat(variables('varSiteRoot'), outputs('Site
 Utilize a ação obter todas as listas e bibliotecas do site, e passe como valor a variável varSite, que no caso será a URL do site no qual foi chamado o fluxo.
 
 Após isso, iremos utilizar um aplicar a cada para cada valor da ação anterior, logo no inicio fazemos uma verificação na variável contador (poderia ser um boolean também).
-Esta verificação é feita inicialmente para evitar que o aplicar a cada continue fazendo chamadas no sharepoint desnecessariamente, como o Power Automate não possui a instrução ```break```.
+
+Esta verificação é feita inicialmente para evitar que o aplicar a cada continue fazendo chamadas no sharepoint desnecessariamente, como o Power Automate não possui a instrução ```break``` para sair de um loop.
 
 Se o valor for 0, então devemos fazer a chamada no Sharepoint.
 
